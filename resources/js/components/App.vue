@@ -8,7 +8,6 @@
             <div class="collapse navbar-collapse">
                 <div class="navbar-nav">
                     <router-link to="/" class="nav-item nav-link">Home</router-link>
-                    <router-link to="/add" class="nav-item nav-link">Novo Cliente</router-link>
                 </div>
             </div>
         </nav>

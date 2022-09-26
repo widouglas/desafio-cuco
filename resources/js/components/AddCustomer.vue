@@ -1,30 +1,35 @@
 <template>
     <div>
-        <h3 class="text-center">Add Customer</h3>
+        <h3 class="text-center">Novo Cliente</h3>
+
+        <div v-if="loading">Loading...</div>
+
         <div class="row">
             <div class="col-md-6">
+                <div v-if="errors">{{ errors }}</div>
+
                 <form @submit.prevent="addCustomer">
                     <div class="form-group">
                         <label>CPF</label>
-                        <input type="text" class="form-control" v-model="customer.cpf">
+                        <input type="text" class="form-control" :rules="{ required: true }" v-model="customer.cpf">
                     </div>
 
                     <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" v-model="customer.name">
+                        <label>Nome</label>
+                        <input type="text" class="form-control" :rules="{ required: true }" v-model="customer.name">
                     </div>
 
                     <div class="form-group">
-                        <label>Birthdate</label>
-                        <input type="date" class="form-control" v-model="customer.birthdate">
+                        <label>Nascimento</label>
+                        <input type="date" class="form-control" :rules="{ required: true }" v-model="customer.birthdate">
                     </div>
 
                     <div class="form-group">
-                        <label>Phone</label>
+                        <label>Telefone</label>
                         <input type="text" class="form-control" v-model="customer.phone">
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Add Customer</button>
+                    <button type="submit" class="btn btn-primary">Salvar Cliente</button>
                 </form>
             </div>
         </div>
@@ -35,17 +40,22 @@
     export default {
         data() {
             return {
-                customer: {}
+                customer: {},
+                errors: {},
+                loading: false
             }
         },
         methods: {
             addCustomer() {
+                this.loading = true
                 this.axios
                     .post('http://127.0.0.1:8989/api/customers', this.customer)
                     .then(response => (
                         this.$router.push({name: 'home'})
                     ))
-                    .catch(error => console.log(error))
+                    .catch(error => (
+                        this.errors = error
+                    ))
                     .finally(() => this.loading = false)
             }
         }

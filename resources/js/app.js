@@ -1,24 +1,27 @@
 require('./bootstrap');
 import Vue from 'vue';
 window.Vue = require('vue');
-  
+
 import App from './components/App.vue';
 import VueRouter from 'vue-router';
 import VueAxios from 'vue-axios';
 import axios from 'axios';
 import {routes} from './routes';
-  
-  
-  
-  
+import VueLoading from 'vuejs-loading-plugin'
+
+
+
+
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
-  
+// using default options
+Vue.use(VueLoading)
+
 const router = new VueRouter({
     mode: 'history',
     routes: routes
 });
-  
+
 const app = new Vue({
     el: '#app',
     router: router,

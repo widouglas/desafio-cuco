@@ -23,7 +23,7 @@ Route::get('/', function () {
     return redirect('customer');
 });
 
-Route::get('customers/findBy', [CustomerController::class, 'findBy']);
+Route::get('customers/findBy', [\App\Http\Controllers\CustomerController::class, 'findBy']);
 Route::resource('/customers', CustomerController::class);
 
 Route::get('posts', [PostController::class, 'index']);

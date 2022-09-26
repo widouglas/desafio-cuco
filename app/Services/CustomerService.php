@@ -34,7 +34,7 @@ class CustomerService
         ]);
 
         if ($validator->fails()) {
-            throw new InvalidArgumentException($validator->errors());
+            throw new InvalidArgumentException($validator->errors()->first());
         }
 
         $customer = $this->customerRepository->save($data);

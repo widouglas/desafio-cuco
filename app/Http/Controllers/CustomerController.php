@@ -28,9 +28,7 @@ class CustomerController extends Controller
             $result = $this->customerService->findAll();
         } catch (Exception $e) {
             $status = 500;
-            $result = [
-                'error' => $e->getMessage()
-            ];
+            $result = $e->getMessage();
         }
         return response()->json($result, $status);
     }
@@ -48,17 +46,13 @@ class CustomerController extends Controller
         ]);
         $status = 200;
         try {
-            $result['data'] = $this->customerService->save($data);
+            $result = $this->customerService->save($data);
         }catch (InvalidArgumentException $e) {
             $status = 400;
-            $result = [
-                'error' => $e->getMessage()
-            ];
+            $result = $e->getMessage();
         } catch (Exception $e) {
             $status = 500;
-            $result = [
-                'error' => $e->getMessage()
-            ];
+            $result = $e->getMessage();
         }
         return response()->json($result, $status);
     }
@@ -74,12 +68,10 @@ class CustomerController extends Controller
         $data = $request->only(["name", "cpf"]);
         $status = 200;
         try {
-            $result['data'] = $this->customerService->findBy($data);
+            $result = $this->customerService->findBy($data);
         } catch (Exception $e) {
             $status = 500;
-            $result = [
-                'error' => $e->getMessage()
-            ];
+            $result = $e->getMessage();
         }
         return response()->json($result, $status);
     }
@@ -94,12 +86,10 @@ class CustomerController extends Controller
     {
         $status = 200;
         try {
-            $result['data'] = $this->customerService->delete($id);
+            $result = $this->customerService->delete($id);
         } catch (Exception $e) {
             $status = 500;
-            $result = [
-                'error' => $e->getMessage()
-            ];
+            $result = $e->getMessage();
         }
         return response()->json($result, $status);
     }

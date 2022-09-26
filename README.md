@@ -86,7 +86,7 @@ php artisan migrate
 ```
 
 ## API HTTP
-https://localhost:8989/api/customers
+http://localhost:8989/api/customers
 
 ## Test PHPUnit
 ```sh

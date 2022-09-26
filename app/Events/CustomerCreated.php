@@ -15,8 +15,8 @@ class CustomerCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $customerName;
-    public $customerCpf;
+    public String $customerName;
+    public String $customerCpf;
 
     /**
      * Create a new event instance.

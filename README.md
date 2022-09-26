@@ -78,7 +78,7 @@ touch database/database.sqlite
 - Dando permissão para escrita no arquivo database
 ```sh
 chmod 777 database/ -R
-chmod 777 storage/logs/ -R
+chmod 777 storage/ -R
 ```
 
 - Criando a database

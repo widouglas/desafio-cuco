@@ -1,6 +1,7 @@
 # Desafio Cuco Health
 
 API HTTP responsável pelo gerenciamento de clientes.
+Front-end (Tarefa Plus) - Laravel Mix + Vue
 
 ## Dependências
 
@@ -83,8 +84,11 @@ chmod 777 database/ -R
 php artisan migrate
 ```
 
-## API
+## API HTTP
 https://localhost:8989/api/customers
+
+## Front-End Vue
+https://localhost:8989/
 
 ## Documentação Postman
 - Importar collection no Postman

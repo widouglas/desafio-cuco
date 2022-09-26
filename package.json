@@ -25,7 +25,10 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "moment": "^2.29.4",
+        "vee-validate": "^2.2.15",
         "vue-axios": "^3.2.4",
+        "vue-full-loading": "^1.2.1",
         "vue-router": "^3.5.1",
         "vuejs-loading-plugin": "^1.0.51"
     }

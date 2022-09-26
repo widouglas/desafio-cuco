@@ -7,15 +7,9 @@ import VueRouter from 'vue-router';
 import VueAxios from 'vue-axios';
 import axios from 'axios';
 import {routes} from './routes';
-import VueLoading from 'vuejs-loading-plugin'
-
-
-
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
-// using default options
-Vue.use(VueLoading)
 
 const router = new VueRouter({
     mode: 'history',
@@ -25,5 +19,5 @@ const router = new VueRouter({
 const app = new Vue({
     el: '#app',
     router: router,
-    render: h => h(App),
+    render: h => h(App)
 });

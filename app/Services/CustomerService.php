@@ -37,6 +37,7 @@ class CustomerService
             throw new InvalidArgumentException($validator->errors()->first());
         }
 
+        $data['birthdate'] = date('Y-m-d', strtotime($data['birthdate']));
         $customer = $this->customerRepository->save($data);
 
         CustomerCreated::dispatch(

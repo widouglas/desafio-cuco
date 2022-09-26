@@ -6,9 +6,9 @@ use InvalidArgumentException;
 use App\Events\CustomerCreated;
 use App\Events\CustomerDeleted;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use App\Repositories\Interfaces\ICustomerRepository;
+use Illuminate\Database\Eloquent\Collection;
 
 class CustomerService
 {
@@ -24,6 +24,13 @@ class CustomerService
         $this->customerRepository = $customerRepository;
     }
 
+    /**
+     * Save customer services
+     *
+     * @param array $data
+     * @return Customer
+     * @throws InvalidArgumentException
+     */
     public function save(array $data)
     {
         $validator = Validator::make($data, [
@@ -52,16 +59,27 @@ class CustomerService
         return $customer;
     }
 
-    public function findAll()
+    /**
+     * @return Collection
+     */
+    public function findAll(): Collection
     {
         return $this->customerRepository->findAll();
     }
 
-    public function findBy(array $criteries)
+    /**
+     * @param array $name
+     * @return Collection
+     */
+    public function findBy(array $criteries): Collection
     {
         return $this->customerRepository->findBy($criteries);
     }
 
+    /**
+     * @param int $id
+     * @return bool
+     */
     public function delete(int $id)
     {
         try {

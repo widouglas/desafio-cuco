@@ -92,9 +92,9 @@ https://localhost:8989/api/customers
 php vendor/bin/phpunit
 ```
 
-## Front-End Vue
-https://localhost:8989/
-
 ## Documentação Postman
 - Importar collection no Postman
 https://www.getpostman.com/collections/448a45fe433b83867366
+
+## Front-End Vue (Extra)
+https://localhost:8989/

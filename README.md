@@ -11,9 +11,10 @@ Front-end (Tarefa Plus) - Laravel Mix + Vue
 - **[Docker](https://git-scm.com/downloads)**
 
 ### Server
-- **[Laravel 9.0](https://laravel.com/)**
+- **[Laravel 8.4](https://laravel.com/)**
 - **[PHP 8.0](http://php.net/)**
 - **[Composer](https://getcomposer.org/)**
+- **[NPM](https://www.npmjs.com/)**
 - SQLlite
 
 ## Instalação

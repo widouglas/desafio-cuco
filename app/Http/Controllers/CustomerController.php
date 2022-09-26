@@ -47,7 +47,7 @@ class CustomerController extends Controller
         $status = 200;
         try {
             $result = $this->customerService->save($data);
-        }catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException $e) {
             $status = 400;
             $result = $e->getMessage();
         } catch (Exception $e) {
@@ -87,6 +87,9 @@ class CustomerController extends Controller
         $status = 200;
         try {
             $result = $this->customerService->delete($id);
+        } catch (InvalidArgumentException $e) {
+            $status = 400;
+            $result = $e->getMessage();
         } catch (Exception $e) {
             $status = 500;
             $result = $e->getMessage();

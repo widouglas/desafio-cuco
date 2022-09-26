@@ -11,4 +11,5 @@ interface ICustomerRepository
     public function findBy(array $criteries): Collection;
     public function findById(int $id): Customer;
     public function findAll(): Collection;
+    public function existed(string $cpf): bool;
 }

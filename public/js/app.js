@@ -1925,6 +1925,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1934,7 +1938,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    createCustomer: function createCustomer() {
+    createCustomer: function createCustomer(e) {
       var _this = this;
 
       this.errors = [];
@@ -1954,13 +1958,17 @@ __webpack_require__.r(__webpack_exports__);
         return false;
       }
 
+      e.preventDefault();
       this.loading = true;
       this.axios.post('http://127.0.0.1:8989/api/customers', this.customer).then(function (response) {
-        return _this.$router.push({
+        this.$router.push({
           name: 'home'
         });
       })["catch"](function (error) {
-        alert(error);
+        alert(error.response.data);
+        this.$router.push({
+          name: 'home'
+        });
       })["finally"](function () {
         return _this.loading = false;
       });
@@ -37921,7 +37929,7 @@ var render = function() {
         )
       : _vm._e(),
     _vm._v(" "),
-    _c("form", { on: { submit: _vm.createCustomer } }, [
+    _c("form", { attrs: { id: "frm-customer" } }, [
       _c("div", { staticClass: "row" }, [
         _vm.errors.length
           ? _c(
@@ -38054,25 +38062,28 @@ var render = function() {
           })
         ]),
         _vm._v(" "),
-        _vm._m(0)
+        _c("div", { staticClass: "form-group col-md-12" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-sm btn-primary",
+              attrs: { type: "button" },
+              on: { click: _vm.createCustomer }
+            },
+            [_vm._v("\n                    Salvar Cliente\n                ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            { staticClass: "btn btn-sm btn-warning", attrs: { href: "/" } },
+            [_vm._v("\n                    Voltar\n                ")]
+          )
+        ])
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-md-12" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-sm btn-primary", attrs: { type: "submit" } },
-        [_vm._v("\n                    Salvar Cliente\n                ")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

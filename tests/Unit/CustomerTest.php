@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class CustomerCreatedTest extends TestCase
+class CustomerTest extends TestCase
 {
     /**
      * A basic feature test example.
@@ -27,10 +27,13 @@ class CustomerCreatedTest extends TestCase
             "birthdate" => "1975-01-10"
         ];
 
+        $response = $this->call('POST', '/api/customers', $data);
         if (!$this->CPFExisted($data["cpf"])) {
-            $response = $this->call('POST', '/api/customers', $data);
             $this->assertEquals(200, $response->status());
+            return;
         }
+
+        $this->assertEquals(400, $response->status());
     }
 
     public function testNewCustomerWithCPFExisted()
@@ -41,10 +44,13 @@ class CustomerCreatedTest extends TestCase
             "birthdate" => "1975-01-10"
         ];
 
+        $response = $this->call('POST', '/api/customers', $data);
         if ($this->CPFExisted($data["cpf"])) {
-            $response = $this->call('POST', '/api/customers', $data);
-            $this->assertEquals(500, $response->status());
+            $this->assertEquals(400, $response->status());
+            return;
         }
+
+        $this->assertEquals(200, $response->status());
     }
 
     public function testNewCustomerWithoutName()

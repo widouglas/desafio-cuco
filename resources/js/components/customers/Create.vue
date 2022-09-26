@@ -4,7 +4,7 @@
 
         <div class="alert alert-info" role="alert" v-if="loading">Salvando, aguarde...</div>
 
-        <form @submit="createCustomer">
+        <form id="frm-customer">
             <div class="row">
                 <div class="alert alert-danger col-md-12" role="alert" v-if="errors.length">
                     <b>Por favor, corriga os seguintes erros:</b>
@@ -35,9 +35,13 @@
                 </div>
 
                 <div class="form-group col-md-12">
-                    <button type="submit" class="btn btn-sm btn-primary">
+                    <button type="button" @click="createCustomer" class="btn btn-sm btn-primary">
                         Salvar Cliente
                     </button>
+
+                    <a href="/" class="btn btn-sm btn-warning">
+                        Voltar
+                    </a>
                 </div>
             </div>
         </form>
@@ -54,7 +58,7 @@ export default {
         }
     },
     methods: {
-        createCustomer() {
+        createCustomer(e) {
             this.errors = [];
 
             if (!this.customer.cpf) {
@@ -72,14 +76,16 @@ export default {
                 return false;
             }
 
+            e.preventDefault();
             this.loading = true;
             this.axios
                 .post('http://127.0.0.1:8989/api/customers', this.customer)
-                .then(response => (
+                .then(function (response) {
                     this.$router.push({ name: 'home' })
-                ))
+                })
                 .catch(function (error) {
-                    alert(error);
+                    alert(error.response.data);
+                    this.$router.push({ name: 'home' })
                 })
                 .finally(() => this.loading = false)
         }

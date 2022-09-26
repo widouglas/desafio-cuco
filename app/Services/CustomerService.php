@@ -37,6 +37,10 @@ class CustomerService
             throw new InvalidArgumentException($validator->errors()->first());
         }
 
+        if ($this->customerRepository->existed($data['cpf']))
+            throw new InvalidArgumentException("Customer already registered");
+
+
         $data['birthdate'] = date('Y-m-d', strtotime($data['birthdate']));
         $customer = $this->customerRepository->save($data);
 
@@ -61,7 +65,8 @@ class CustomerService
     public function delete(int $id)
     {
         try {
-            $customer = $this->customerRepository->findById($id);
+            if (!$customer = $this->customerRepository->findById($id))
+                throw new InvalidArgumentException("Customer not found");
             DB::beginTransaction();
             $data = $this->customerRepository->delete($id);
             DB::commit();
@@ -71,8 +76,7 @@ class CustomerService
             );
         } catch (Exception $e) {
             DB::rollBack();
-            Log::info($e->getMessage());
-            throw new InvalidArgumentException("Unable to delete");
+            throw new InvalidArgumentException("Customer not found");
         }
         return $data;
     }

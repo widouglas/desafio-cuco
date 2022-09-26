@@ -44,4 +44,11 @@ class CustomerRepository implements ICustomerRepository
     {
         return $this->model::All();
     }
+
+    public function existed(string $cpf): bool
+    {
+        if ($this->model::where('cpf', $cpf)->count() > 0)
+            return true;
+        return false;
+    }
 }

@@ -87,6 +87,11 @@ php artisan migrate
 ## API HTTP
 https://localhost:8989/api/customers
 
+## Test PHPUnit
+```sh
+php vendor/bin/phpunit
+```
+
 ## Front-End Vue
 https://localhost:8989/
 

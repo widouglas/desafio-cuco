@@ -3,7 +3,7 @@
 API HTTP responsável pelo gerenciamento de clientes.
 Front-end (Tarefa Plus) - Laravel Mix + Vue
 
-Todos os CPF utilizados foram gerados randomicamente no site **[Gerador de CPF](https://www.geradordecpf.org/)** e todos os outros são fictícios. 
+Todos os CPF utilizados foram gerados randomicamente no site **[Gerador de CPF](https://www.geradordecpf.org/)** e todos os outros dados são fictícios. 
 
 ## Dependências
 

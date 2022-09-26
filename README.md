@@ -8,7 +8,7 @@ Front-end (Tarefa Plus) - Laravel Mix + Vue
 ### Docker
 - **[Docker](https://docs.docker.com/install/)**
 - **[Docker Compose](https://docs.docker.com/compose/install/)**
-- **[Docker](https://git-scm.com/downloads)**
+- **[GIT](https://git-scm.com/downloads)**
 
 ### Server
 - **[Laravel 8.4](https://laravel.com/)**
@@ -20,12 +20,12 @@ Front-end (Tarefa Plus) - Laravel Mix + Vue
 ## Instalação
 - Copiando o projeto
 ```sh
-git clone https://github.com/widouglas/challenge-cuco.git 
+git clone https://github.com/widouglas/desafio-cuco.git 
 ```
 
 - Trabalhando na pasta do projeto
 ```sh
-cd challenge-cuco
+cd desafio-cuco
 ```
 
 - Criando o arquivo .env

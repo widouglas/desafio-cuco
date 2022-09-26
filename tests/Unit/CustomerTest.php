@@ -2,6 +2,8 @@
 
 namespace Tests\Unit;
 
+use App\Models\Customer;
+use App\Repositories\Eloquent\CustomerRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;

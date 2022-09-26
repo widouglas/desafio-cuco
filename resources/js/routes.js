@@ -1,17 +1,17 @@
-import AllPosts from './components/AllPost.vue';
-import AddPost from './components/AddPost.vue';
+import AllCustomer from './components/AllCustomer.vue';
+import AddCustomer from './components/AddCustomer.vue';
 import EditPost from './components/EditPost.vue';
-  
+
 export const routes = [
     {
         name: 'home',
         path: '/',
-        component: AllPosts
+        component: AllCustomer
     },
     {
         name: 'add',
         path: '/add',
-        component: AddPost
+        component: AddCustomer
     },
     {
         name: 'edit',

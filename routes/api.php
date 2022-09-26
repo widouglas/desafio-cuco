@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,6 +14,17 @@ use App\Http\Controllers\PostController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::get('/', function () {
+    return redirect('customer');
+});
+
+Route::get('customers/findBy', [CustomerController::class, 'findBy']);
+Route::resource('/customers', CustomerController::class);
 
 Route::get('posts', [PostController::class, 'index']);
 Route::group(['prefix' => 'post'], function () {

@@ -91,8 +91,8 @@ class CustomerTest extends TestCase
 
     public function CPFExisted($cpf)
     {
-        $response = $this->get("/api/customers/findBy?cpf={$cpf}");
-        if (count($response->getOriginalContent()))
+        $repositorio = new CustomerRepository(new Customer());
+        if ($repositorio->existed($cpf))
             return true;
         return false;
     }
